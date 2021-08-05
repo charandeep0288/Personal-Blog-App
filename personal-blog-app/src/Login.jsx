@@ -1,5 +1,6 @@
 import { auth, signInWithGoogle } from "./Firebase";
 import { useEffect } from "react";
+import { Redirect } from "react-router-dom";
 
 let Login = (props) => {
 
@@ -8,6 +9,7 @@ let Login = (props) => {
         // if logout -> user = null
         auth.onAuthStateChanged((user) => {
             if (user) {
+                // destructuring
                 let { displayName, email, uid } = user;
                 console.log(user);
 
@@ -20,11 +22,14 @@ let Login = (props) => {
 
     return (
         <div>
+
+            { props.user ? <Redirect to="/login"/> : ""}
+
             <button
                 onClick={signInWithGoogle}
                 type="button"
                 class="btn btn-primary">Login With Google</button>
-            <h1>Login With Google</h1>
+            {/* <h1>Login With Google</h1> */}
         </div>
     );
 }

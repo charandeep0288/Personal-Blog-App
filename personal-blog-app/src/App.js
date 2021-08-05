@@ -9,24 +9,7 @@ import { firestore } from "./Firebase";
 function App() {
 
 
-  {/* <>
-       <Router>
-         <Switch>
 
-           <Route to="/login">
-             <Login />
-           </Route>
-
-           <Route to="/post">
-             <Post />
-           </Route>
-
-           <Route to="/allposts">
-             <AllPosts />
-           </Route>
-         </Switch>
-      </Router>
-     </> */}
 
   let [user, setUser] = useState(null);
 
@@ -44,9 +27,27 @@ function App() {
   // }, []);
 
   return (
-    <div> {user ? <Post user={user} /> : <Login handleUser={setUser} />}
-    </div>
+    // <div> {user ? <Post user={user} /> : <Login handleUser={setUser} />}
+    // </div>
 
+    <>
+      <Router>
+        <Switch>
+
+          <Route to="/login">
+            <Login handleUser={setUser} user={user}/>
+          </Route>
+
+          <Route to="/post">
+            <Post user={user}/>
+          </Route>
+
+          <Route to="/allposts">
+            <AllPosts />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 

@@ -1,7 +1,11 @@
+import { auth } from "./Firebase"
+
 let AllPosts = () => {
 
     return (
-        <h1>AllPosts</h1>
+        <button onClick={() => {
+            auth.signOut()
+        } }>Logout</button>
     );
 }
 
