@@ -2,6 +2,8 @@ import { auth, signInWithGoogle } from "./Firebase";
 import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
+import "./Login.css";
+
 let Login = (props) => {
 
     useEffect(() => {
@@ -23,9 +25,9 @@ let Login = (props) => {
     return (
         <div>
 
-            { props.user ? <Redirect to="/login"/> : ""}
+            { props.user ? <Redirect to="/Post"/> : ""}
 
-            <button
+            <button id="login-btn"
                 onClick={signInWithGoogle}
                 type="button"
                 class="btn btn-primary">Login With Google</button>

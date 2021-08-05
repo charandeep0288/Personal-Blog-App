@@ -34,15 +34,15 @@ function App() {
       <Router>
         <Switch>
 
-          <Route to="/login">
+          <Route path="/login">
             <Login handleUser={setUser} user={user}/>
           </Route>
 
-          <Route to="/post">
+          <Route path="/post">
             <Post user={user}/>
           </Route>
 
-          <Route to="/allposts">
+          <Route path="/allposts">
             <AllPosts />
           </Route>
         </Switch>
