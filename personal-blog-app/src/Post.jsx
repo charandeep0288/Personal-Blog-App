@@ -1,5 +1,6 @@
 import { Redirect, Link } from "react-router-dom";
-import { auth } from "./Firebase"
+import { auth, firestore } from "./Firebase"
+import { useState } from "react";
 
 import "./Post.css";
 
@@ -7,6 +8,18 @@ let Post = (props) => {
 
     console.log(props.user ? "true" : "false");
 
+    const [body, setBody] = useState("");
+    const [title, setTitle] = useState("");
+    
+    const handleTitleInput = event1 => {
+        setTitle(event1.target.value);
+    };
+
+    const handleBodyInput = event2 =>{
+        setBody(event2.target.value);
+    };
+
+   
     return (
         // <h1>Post</h1>
         <div>
@@ -30,17 +43,30 @@ let Post = (props) => {
                     </div>
 
 
-                    <input placeholder="Enter Title . . . . . . . ." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></input>
+                    <input onChange={handleBodyInput} id="title" placeholder="Enter Title . . . . . . . ." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></input>
 
-                    <textarea  id="body" class="form-control is-invalid" id="validationTextarea" placeholder="Enter Body . . . . . . " required></textarea>
+                    <textarea  onChange={handleTitleInput} class="form-control is-invalid" id="validationTextarea" placeholder="Enter Body . . . . . . " required></textarea>
 
-                    <button id="post-btn" type="button" class="btn btn-primary">Post</button>
+                    <button 
+                        id="post-btn" type="button" 
+                        class="btn btn-primary"
+                        onClick={() =>{
 
-                    <Link to="/allPost"><button id="allpost-btn" type="button" class="btn btn-primary">All Post </button>
+                            console.log(title);
+                            firestore.collection("posts").add({
+                                Title: title,
+                                Body: body,
+                                uid: props.user.uid,
+                            });
+                            
+                        }}>Post</button>
+                        
+
+                    <Link to="/allPost"><button id="allpost-btn" type="button" class="btn btn-primary">All Posts</button>
                     </Link>
                 </>
             ) : (
-                <Redirect to="/Login" />
+                <Redirect to="/login" />
             )}
         </div>
     );
