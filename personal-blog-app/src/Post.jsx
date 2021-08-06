@@ -43,9 +43,9 @@ let Post = (props) => {
                     </div>
 
 
-                    <input onChange={handleBodyInput} id="title" placeholder="Enter Title . . . . . . . ." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></input>
+                    <input onChange={handleTitleInput} id="title" placeholder="Enter Title . . . . . . . ." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></input>
 
-                    <textarea  onChange={handleTitleInput} class="form-control is-invalid" id="validationTextarea" placeholder="Enter Body . . . . . . " required></textarea>
+                    <textarea  onChange={handleBodyInput} class="form-control is-invalid" id="validationTextarea" placeholder="Enter Body . . . . . . " required></textarea>
 
                     <button 
                         id="post-btn" type="button" 
@@ -58,11 +58,11 @@ let Post = (props) => {
                                 Body: body,
                                 uid: props.user.uid,
                             });
-                            
+
                         }}>Post</button>
                         
 
-                    <Link to="/allPost"><button id="allpost-btn" type="button" class="btn btn-primary">All Posts</button>
+                    <Link to="/allposts"><button id="allpost-btn" type="button" class="btn btn-primary">All Posts</button>
                     </Link>
                 </>
             ) : (
