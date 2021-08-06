@@ -43,9 +43,9 @@ let Post = (props) => {
                     </div>
 
 
-                    <input onChange={handleTitleInput} id="title" placeholder="Enter Title . . . . . . . ." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></input>
+                    <input onChange={handleTitleInput} value={title} id="title" placeholder="Enter Title . . . . . . . ." type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></input>
 
-                    <textarea  onChange={handleBodyInput} class="form-control is-invalid" id="validationTextarea" placeholder="Enter Body . . . . . . " required></textarea>
+                    <textarea  onChange={handleBodyInput} value={body} class="form-control is-invalid" id="validationTextarea" placeholder="Enter Body . . . . . . " required></textarea>
 
                     <button 
                         id="post-btn" type="button" 
@@ -58,7 +58,8 @@ let Post = (props) => {
                                 Body: body,
                                 uid: props.user.uid,
                             });
-
+                            setBody("");
+                            setTitle("");
                         }}>Post</button>
                         
 

@@ -39,14 +39,23 @@ let AllPosts = (props) => {
         <>
             {props.user ? (
                 <>
-                    <Link to="/post"><button type="button" class="btn btn-secondary">Back</button></Link>
+                    <div className="row">
 
-                    <h1>All Posts</h1>
+                        <div className="col-5 p4">
+                            <Link to="/post"><button id="back-btn" type="button" class="btn btn-secondary">Back</button></Link>
+                        </div>
 
-                    <button onClick={() => {
-                        auth.signOut()
-                    }} type="button" class="btn btn-danger">Logout</button>
+                        <div className="col-5 p4">
+                            <h1 id="allPosts">All Posts</h1>
+                        </div>
 
+                        <div className="col-2 p4">
+                            <button id="logout" onClick={() => {
+                                auth.signOut()
+                            }} type="button" class="btn btn-danger">Logout</button>
+                        </div>
+
+                    </div>
                     <ul>
                         {
                             posts.map((el) => {
@@ -54,8 +63,8 @@ let AllPosts = (props) => {
                                 if (el.data.uid === props.user.uid) {
                                     return (
                                         <ul id="data">
-                                            <li key={el.id}>{el.data.Body}</li>
-                                            <li key={el.id}>{el.data.Title}</li>
+                                            <li id="title-data" key={el.id}>Title: {el.data.Title}</li>
+                                            <li id="body-data" key={el.id}>Body: {el.data.Body}</li>
                                         </ul>
                                     );
                                 };

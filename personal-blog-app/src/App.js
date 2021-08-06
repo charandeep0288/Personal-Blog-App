@@ -8,9 +8,6 @@ import { firebase, auth } from "./Firebase";
 
 function App() {
 
-
-
-
   let [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -28,7 +25,11 @@ function App() {
       <Router>
         <Switch>
 
-          <Route path="/login">
+          <Route path="/" exact>
+            <Login handleUser={setUser} user={user} />
+          </Route>
+
+          <Route path="/login" exact>
             <Login handleUser={setUser} user={user} />
           </Route>
 
@@ -40,9 +41,7 @@ function App() {
             <AllPosts user={user} />
           </Route>
 
-          {/* <Route path="/">
-            <Login handleUser={setUser} user={user} />
-          </Route> */}
+
         </Switch>
       </Router>
     </>
